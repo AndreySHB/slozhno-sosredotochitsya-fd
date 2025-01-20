@@ -1,0 +1,17 @@
+.theme-dark .page {
+    --main-color: #FF0070;
+    --title-color: #FF0070;
+    --header-color: #DB00FF;
+    --menu-color: #F1B2CE;
+    --background-color: rgb(0, 0, 40);
+    --background-image: url("../images/cover-image-dark.png");
+}
+
+.theme-light .page {
+    --main-color: #FF8DCB;
+    --title-color: #353430;
+    --header-color: #FFC2E6;
+    --menu-color: #353430;
+    --background-color: #FFF1F7;
+    --background-image: url("../images/cover-image-light.png");
+}
