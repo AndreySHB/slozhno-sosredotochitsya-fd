@@ -1,10 +1,14 @@
 .page {
     background-color: var(--background-color);
+    /*странно, в макете фон не на всю страницу*/
+    background-image: var(--background-image);
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed;
 }
 
 .header__theme-menu-list {
-    color: var(--main-color);
+    color: var(--menu-color);
     list-style: none;
 }
 
@@ -23,7 +27,7 @@
 }
 
 .header__theme-menu-button:focus-visible {
-    border-bottom: 1px solid var(--main-color);
+    border-bottom: 1px solid currentColor;
     border-top: inherit;
     border-left: inherit;
     border-right: inherit;
@@ -31,15 +35,15 @@
 }
 
 .header__theme-menu-button:hover {
-    border-bottom: var(--main-color);
-    outline: 1px solid var(--main-color);
+    border-bottom: currentColor;
+    outline: 1px solid var(--menu-hover);
 }
 
 .rec {
     position: absolute;
     right: 38px;
     top: 10px;
-    color: var(--main-color);
+    color: var(--rec-color);
     font-family: IBM Plex Mono, sans-serif;
     font-size: 18px;
     font-weight: 400;
@@ -61,17 +65,9 @@
     border-radius: 50%;
 }
 
-.theme-light .rec::after {
-    display: none;
-}
-
-.theme-light .rec {
-    color: rgba(0, 0, 0, 0);
-}
-
 h1 {
     color: var(--header-color);
-    text-shadow: 4px 4px var(--main-color);
+    text-shadow: 4px 4px var(--header-shadow-color);
     font-family: IBM Plex Mono, sans-serif;
     font-weight: 700;
     text-underline-position: from-font;
@@ -79,40 +75,73 @@ h1 {
     text-transform: lowercase;
 }
 
+h1.footer_main_title {
+    text-shadow: 2px 2px var(--header-shadow-color);
+}
+
 h2 {
     font-family: IBM Plex Mono, sans-serif;
     font-size: 18px;
     font-weight: 700;
-    line-height: 23px;
+    line-height: 23.4px;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
 }
 
+h3,
 h4 {
     font-family: IBM Plex Mono, sans-serif;
+    color: var(--h3-h4-color);
     font-size: 18px;
     font-weight: 700;
-    line-height: 23px;
+    line-height: 23.2px;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
 }
 
-.header.decorated-zone {
+.header {
     height: 100vh;
     min-height: 668px;
-    background-image: var(--background-image);
     display: grid;
-    grid-template-rows: repeat(3, min-content);
+    gap: 55px;
+    grid-template-rows: 1fr min-content 1fr;
 }
 
 .header_title {
     background-color: var(--main-color);
+    color: var(--header-title-color);
     font-family: IBM Plex Mono, serif;
     font-size: 18px;
     font-weight: 700;
-    line-height: 23px;
+    line-height: 23.4px;
+    justify-self: center;
+    align-self: start;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+}
+
+.decorated-zone {
+    position: relative;
+}
+
+.decorated-zone::before {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-color: var(--corner-color);
+    border-width: 0 0 1px 1px;
+    border-style: solid;
+}
+
+.decorated-zone::after {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-color: var(--corner-color);
+    border-width: 1px 1px 0 0;
+    border-style: solid;
 }
 
 .section_title {
@@ -124,7 +153,7 @@ h4 {
 }
 
 .card_content {
-    color: var(--menu-color);
+    color: var(--content-color);
     font-family: IBM Plex Mono, sans-serif;
     font-size: 18px;
     font-weight: 400;
@@ -139,6 +168,26 @@ h4 {
 
 .section_better_concentrate_additional_title {
     background-color: var(--main-color);
+}
+
+.link {
+    color: var(--content-color);
+    text-shadow: 1px 1px 0 var(--main-color);
+    text-decoration: none;
+}
+
+.link:focus {
+    outline: none;
+}
+
+.link:focus-visible {
+    border-bottom: currentColor;
+    outline: 1px solid var(--content-color);
+}
+
+.link:hover {
+    border-bottom: 1px solid;
+    text-decoration-color: var(--content-color);
 }
 
 .image {
@@ -162,14 +211,26 @@ h4 {
 }
 
 @media (min-width: 375px) {
+    .decorated-zone::before {
+        left: 10px;
+        bottom: 10px;
+    }
+
+    .decorated-zone::after {
+        right: 10px;
+        top: 10px;
+    }
+
     .header.decorated-zone {
         padding: 0 10px;
     }
 
     .header__theme-menu {
-        margin-top: 77px;
+        /*я понял идею, но к сожалению, только лишь выравниванием внутри сетки мне не удалось удовлетворить макет*/
+        margin-top: 60px;
         margin-right: 8px;
         justify-self: end;
+        align-self: center;
     }
 
     .header__theme-menu-item:not(:first-child) {
@@ -179,15 +240,6 @@ h4 {
     h1 {
         font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
         line-height: 95.7px;
-    }
-
-    .header_focus {
-        margin-top: 70px;
-    }
-
-    .header_title {
-        margin-top: 55px;
-        min-height: 117px;
     }
 
     .section {
@@ -218,12 +270,26 @@ h4 {
         gap: 10px;
     }
 
-    .footer_focus {
-        margin-top: 90px;
+    .footer {
+        margin-top: 40px;
+    }
+
+    .footer_main_title {
+        align-self: center;
     }
 }
 
 @media (min-width: 768px) {
+    .decorated-zone::before {
+        left: 20px;
+        bottom: 20px;
+    }
+
+    .decorated-zone::after {
+        right: 20px;
+        top: 20px;
+    }
+
     .header.decorated-zone {
         padding: 0 20px;
         min-height: 1024px;
@@ -235,11 +301,10 @@ h4 {
     }
 
     .header__theme-menu {
-        margin-top: 193px;
+        margin-top: 70px;
     }
 
-    .header_focus {
-        margin-top: 180px;
+    .header_main_title {
         margin-left: -20px;
     }
 
@@ -250,7 +315,7 @@ h4 {
 
     .header_title {
         max-width: 364px;
-        margin-top: 162px;
+        margin-top: 108px;
         justify-self: end;
     }
 
@@ -330,8 +395,12 @@ h4 {
         grid-row-end: 4;
     }
 
-    .footer_focus {
-        margin-top: 360px;
+    .footer {
+        margin-top: 60px;
+    }
+
+    .footer_main_title {
+        align-self: center;
     }
 }
 
@@ -341,9 +410,10 @@ h4 {
     }
 
     .header__theme-menu {
-        margin-top: 22px;
+        margin-top: 20px;
         margin-right: 0;
         justify-self: center;
+        align-self: start;
     }
 
     .header__theme-menu-item:not(:first-child) {
@@ -356,20 +426,14 @@ h4 {
         gap: 25px;
     }
 
-    .header_focus {
+    .header_main_title {
         min-width: 364px;
-        margin-top: 278px;
-    }
-
-    h1 {
-        line-height: 129.53px;
     }
 
     .header_title {
+        margin-top: 75px;
+        align-self: start;
         min-width: 491px;
-        margin-top: 115px;
-        min-height: 67px;
-        justify-self: end;
     }
 
     .section_title {
@@ -387,12 +451,13 @@ h4 {
 
     .section.section_reduce_concentrate .section_card-list {
         display: grid;
-        grid-template-columns: repeat(3, auto);
+        grid-template-columns: repeat(3, 1fr);
         gap: 20px;
         justify-content: space-between;
     }
 
-    .footer_focus {
-        margin-top: 90px;
+    .footer_main_title {
+        align-self: end;
+        margin-bottom: 335px;
     }
 }
