@@ -1,15 +1,33 @@
 .theme-dark .page {
-    --main-color: #FF0070;
-    --menu-color: #FF0070;
-    --menu-hover: #FF007066;
-    --rec-color: #FF0070;
-    --title-color: #FF0070;
-    --header-color: #DB00FF;
+    --main-color: #ff0070;
+    --menu-color: #ff0070;
+    --menu-hover: #ff007066;
+    --rec-color: #ff0070;
+    --title-color: #ff0070;
+    --subtitle-color: #000028;
     --header-title-color: #000028;
-    --header-shadow-color: #FF0070;
-    --h3-h4-color: #000028;
-    --corner-color: #FF0070;
-    --content-color: #F1B2CE;
+    --header-color: #db00ff;
+    --header-shadow-color: #ff0070;
+    --content-color: #f1b2ce;
     --background-color: rgb(0, 0, 40);
     --background-image: url("../images/cover-image-dark.png");
+    --corner-color: #ff0070;
+}
+
+@media (prefers-color-scheme: dark) {
+    .theme-auto .page {
+        --main-color: #ff0070;
+        --menu-color: #ff0070;
+        --menu-hover: #ff007066;
+        --rec-color: #ff0070;
+        --title-color: #ff0070;
+        --subtitle-color: #000028;
+        --header-title-color: #000028;
+        --header-color: #db00ff;
+        --header-shadow-color: #ff0070;
+        --content-color: #f1b2ce;
+        --background-color: rgb(0, 0, 40);
+        --background-image: url("../images/cover-image-dark.png");
+        --corner-color: #ff0070;
+    }
 }

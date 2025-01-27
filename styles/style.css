@@ -1,6 +1,5 @@
 .page {
     background-color: var(--background-color);
-    /*странно, в макете фон не на всю страницу*/
     background-image: var(--background-image);
     background-size: cover;
     background-position: center;
@@ -37,6 +36,12 @@
 .header__theme-menu-button:hover {
     border-bottom: currentColor;
     outline: 1px solid var(--menu-hover);
+    outline-offset: 2px;
+}
+
+.header__theme-menu-button_active {
+    outline: 1px solid currentColor;
+    outline-offset: 2px;
 }
 
 .rec {
@@ -65,17 +70,22 @@
     border-radius: 50%;
 }
 
-h1 {
+.header_main_title,
+.footer_main_title {
     color: var(--header-color);
-    text-shadow: 4px 4px var(--header-shadow-color);
     font-family: IBM Plex Mono, sans-serif;
     font-weight: 700;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     text-transform: lowercase;
+    align-self: center;
 }
 
-h1.footer_main_title {
+.header_main_title {
+    text-shadow: 4px 4px var(--header-shadow-color);
+}
+
+.footer_main_title {
     text-shadow: 2px 2px var(--header-shadow-color);
 }
 
@@ -91,7 +101,7 @@ h2 {
 h3,
 h4 {
     font-family: IBM Plex Mono, sans-serif;
-    color: var(--h3-h4-color);
+    color: var(--subtitle-color);
     font-size: 18px;
     font-weight: 700;
     line-height: 23.2px;
@@ -226,7 +236,6 @@ h4 {
     }
 
     .header__theme-menu {
-        /*я понял идею, но к сожалению, только лишь выравниванием внутри сетки мне не удалось удовлетворить макет*/
         margin-top: 60px;
         margin-right: 8px;
         justify-self: end;
@@ -237,7 +246,8 @@ h4 {
         margin-top: 16px;
     }
 
-    h1 {
+    .header_main_title,
+    .footer_main_title {
         font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
         line-height: 95.7px;
     }
@@ -273,10 +283,6 @@ h4 {
     .footer {
         margin-top: 40px;
     }
-
-    .footer_main_title {
-        align-self: center;
-    }
 }
 
 @media (min-width: 768px) {
@@ -308,7 +314,8 @@ h4 {
         margin-left: -20px;
     }
 
-    h1 {
+    .header_main_title,
+    .footer_main_title {
         font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
         line-height: 99px;
     }
@@ -398,10 +405,6 @@ h4 {
     .footer {
         margin-top: 60px;
     }
-
-    .footer_main_title {
-        align-self: center;
-    }
 }
 
 @media (min-width: 1024px) {
@@ -454,10 +457,5 @@ h4 {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
         justify-content: space-between;
-    }
-
-    .footer_main_title {
-        align-self: end;
-        margin-bottom: 335px;
     }
 }
